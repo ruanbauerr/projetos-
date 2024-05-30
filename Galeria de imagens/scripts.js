@@ -1,23 +1,47 @@
-//o vento DOM é acionado quando o HTML foi completamente carregado
-
 document.addEventListener("DOMContentLoaded", function () {
-  alert("POMBO YAG");
+  const baseImagens = {
+    todas: [
+      "cidade.jpg",
+      "animal.jpg",
+      "natureza.jpg",
+      "animal2.jpeg",
+      "cidade2.webp",
+      "natureza2.jpg",
+      "animal3.webp",
+      "animal4.webp",
+      "natureza3.jpg",
+      "cidade3.webp",
+     
+    ],
+    natureza: ["natureza.jpg", "natureza2.jpg", "natureza3.jpg"],
+    cidade: ["cidade.jpg", "cidade2.webp", "cidade3.webp"],
+    animais: ["animal.jpg", "animal2.jpeg", "animal3.webp", "animal4.webp"],
+    
+  };
 
-  //tipos de dados
-  //string: sequencia de caracter
-  //Number: numeros inteiros ou pontos flutuantes (10.4)
-  //boolean: retorna dois valores, true ou false
-  //object: estrutura de dados que pode armazenar multiplos valores
-  //NULL: quando esta vazio
-  //array: objeto especial ordenado
-  //function: bloco de codigo reutilizavel
+  function carregaImagens(categoria) {
+    //Selecionar elementos HTML com base em um seletor
+    const galeria = document.querySelector("#galeria-imagens");
+    galeria.innerHTML = ""; //limpar bloco, apaga tudo dentro
+    const imagens = baseImagens[categoria];
 
-  //CONST: é usado para declarar uma variavel cujo valor é permanente
-  const test = 50;
+    imagens.forEach((img) => {
+      console.log(img);
+      galeria.innerHTML += '<div> <img src="imagens/' + img + '" /> </div>';
+    });
+  }
 
-  //LET: é usado para declarar variaveis que os valores podem ser retribuidos
+  carregaImagens("todas");
 
-  let C = 0;
-  C = 10;
-  console.log(C);
+  //envento de clique
+  document.body.addEventListener("click", function (event) {
+    //acessa a lista de classes de onde clicou e procura pela classe botao-categoria
+    if (event.target.classList.contains("botao-categoria")) {
+      const categoria = event.target.dataset.categoria;
+
+      //   alert(categoria);
+
+      carregaImagens(categoria);
+    }
+  });
 });
