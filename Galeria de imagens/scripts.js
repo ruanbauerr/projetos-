@@ -2,21 +2,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const baseImagens = {
     todas: [
       "cidade.jpg",
-      "animal.jpg",
+      "animal.webp",
       "natureza.jpg",
-      "animal2.jpeg",
-      "cidade2.webp",
-      "natureza2.jpg",
+      "animal2.jpg",
+      "cidade2.jpeg",
+      "natureza2.jpeg",
       "animal3.webp",
-      "animal4.webp",
-      "natureza3.jpg",
-      "cidade3.webp",
-     
+      "animal4.jpg",
+      "natureza3.jpeg",
+      "cidade3.jpg",
     ],
-    natureza: ["natureza.jpg", "natureza2.jpg", "natureza3.jpg"],
-    cidade: ["cidade.jpg", "cidade2.webp", "cidade3.webp"],
-    animais: ["animal.jpg", "animal2.jpeg", "animal3.webp", "animal4.webp"],
-    
+    natureza: ["natureza.jpg", "natureza2.jpeg", "natureza3.jpeg"],
+    cidade: ["cidade.jpg", "cidade2.jpeg", "cidade3.jpg"],
+    animais: ["animal.webp", "animal2.jpg", "animal3.webp", "animal4.jpg"],
   };
 
   function carregaImagens(categoria) {
@@ -26,13 +24,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const imagens = baseImagens[categoria];
 
     imagens.forEach((img) => {
-      console.log(img);
-      galeria.innerHTML += '<div> <img src="imagens/' + img + '" /> </div>';
+      galeria.innerHTML += '<div class="imagem-item" > <img src="imagens/' + img + '" /> </div>';
     });
   }
 
   carregaImagens("todas");
+function ordenaImagens(ordem){
+const imagens= Array.from (document.querySelectorAll("#galeria-imagens .imagem-item"));
 
+imagens.sort((a, b)=> {
+console.log(a);
+})
+
+}
   //envento de clique
   document.body.addEventListener("click", function (event) {
     //acessa a lista de classes de onde clicou e procura pela classe botao-categoria
@@ -43,5 +47,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       carregaImagens(categoria);
     }
+    if (event.target.classList.contains("botao-ordenar")) {
+      const ordem = event.target.dataset.ordem;
+      ordenaImagens(ordem);
+    }
   });
+  
+  
 });

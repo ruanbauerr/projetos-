@@ -27,3 +27,14 @@ header {
   border-radius: 5px;
   padding: 10px 20px;
 }
+
+#galeria-imagens {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#galeria-imagens img {
+  max-width: 100%;
+  
+}
