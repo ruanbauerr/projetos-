@@ -25,14 +25,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     imagens.forEach((img) => {
       galeria.innerHTML +=
-        '<div class="imagem-item" > <img src="imagens/' + img +'"alt="' + img +'" /> </div>';
+        '<div class="imagem-item" > <img src="imagens/' +
+        img +
+        '"alt="' +
+        img +
+        '" /> </div>';
     });
   }
 
   carregaImagens("todas");
   function ordenaImagens(ordem) {
     console.log(ordem);
-    const imagens = Array.from(document.querySelectorAll("#galeria-imagens .imagem-item")
+    const imagens = Array.from(
+      document.querySelectorAll("#galeria-imagens .imagem-item")
     );
     //alert(123)
     imagens.sort((a, b) => {
@@ -40,7 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const nameB = b.querySelector("img").getAttribute("alt");
 
       //operador ternario- se for true ? se nao :
-      return ordem == "asc" ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+      return ordem == "asc"
+        ? nameA.localeCompare(nameB)
+        : nameB.localeCompare(nameA);
     });
 
     const galeria = document.getElementById("galeria-imagens");
