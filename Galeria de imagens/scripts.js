@@ -24,19 +24,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const imagens = baseImagens[categoria];
 
     imagens.forEach((img) => {
-      galeria.innerHTML += '<div class="imagem-item" > <img src="imagens/' + img + '" /> </div>';
+      galeria.innerHTML +=
+        '<div class="imagem-item" > <img src="imagens/' + img +'"alt="' + img +'" /> </div>';
     });
   }
 
   carregaImagens("todas");
-function ordenaImagens(ordem){
-const imagens= Array.from (document.querySelectorAll("#galeria-imagens .imagem-item"));
+  function ordenaImagens(ordem) {
+    console.log(ordem);
+    const imagens = Array.from(document.querySelectorAll("#galeria-imagens .imagem-item")
+    );
+    //alert(123)
+    imagens.sort((a, b) => {
+      const nameA = a.querySelector("img").getAttribute("alt");
+      const nameB = b.querySelector("img").getAttribute("alt");
 
-imagens.sort((a, b)=> {
-console.log(a);
-})
+      //operador ternario- se for true ? se nao :
+      return ordem == "asc" ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+    });
 
-}
+    const galeria = document.getElementById("galeria-imagens");
+
+    galeria.innerHTML = ""; //esvazia box das imagens
+    imagens.forEach((imagem) => {
+      galeria.appendChild(imagem); //adiciona as imagens novamente, agora ordenada
+    });
+  }
   //envento de clique
   document.body.addEventListener("click", function (event) {
     //acessa a lista de classes de onde clicou e procura pela classe botao-categoria
@@ -52,6 +65,4 @@ console.log(a);
       ordenaImagens(ordem);
     }
   });
-  
-  
 });

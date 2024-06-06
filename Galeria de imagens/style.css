@@ -8,7 +8,7 @@ h1 {
 
 /*esse é o style do cabeçalho*/
 header {
-  background-color: rgb(151, 196, 235);
+  background-color: rgb(81, 162, 233);
   display: flex;
   justify-content: space-between; /* so funciona com display flex*/
   padding: 10px;
@@ -17,7 +17,7 @@ header {
   background-color: rgb(0, 211, 105);
 }
 #box-ordenar button {
-  background-color: rgb(29, 100, 231);
+  background-color: rgb(115, 228, 40);
 }
 
 #box-categorias button,
